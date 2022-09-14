@@ -1,0 +1,18 @@
+<h2>New book</h2>
+  <%= form_with model: @book do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :opinion %>
+    <%= f.submit 'Create Book' %>
+  <% end %>
+  
+<h2>Books</h2>
+
+<% @books.each do |book| %>
+<div>
+  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>Title：<%=link_to "#{book.title}", book_path(book.id) %></p>
+  <p>Opinion：<%= book.opinion %></p>
+</div>
+<% end %>
