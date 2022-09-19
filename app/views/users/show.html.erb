@@ -1,19 +1,28 @@
 <main>
-  <p id="notice"></p>
-  <% if @book.errors.any? %>
-  <%= @book.errors.count %> error prohibited this book from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
 
         <!-- ユーザー情報-->
-        <%= render 'list', user: @user %>
+        <h2>User info</h2>
+        <%= image_tag @user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody><tr></tr>
+            <tr>
+  	          <th>name</th>
+  	          <th><%= @user.name %></th>
+            </tr>
+            <tr>
+          	  <th>introduction</th>
+          	  <th><%= @user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+          <div class="row">
+            <a class="btn btn-outline-secondary btn-block edit_user_<%= @user.id %>" href="/users/<%= @user.id %>/edit">
+              <i class="fas fa-user-cog"></i>
+            </a>
+          </div>
 
         <!-- 投稿フォーム-->
         <h2 class="mt-3">New book</h2>
@@ -60,5 +69,3 @@
     </div>
   </div>
 </main>
-
-
